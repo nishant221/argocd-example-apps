@@ -30,3 +30,7 @@ Create chart name and version as used by the chart label.
 {{- define "helm-guestbook.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{- define "magda.var_dump" -}}
+{{- . | mustToPrettyJson | printf "\nThe JSON output of the dumped var is: \n%s" | fail }}
+{{- end -}}
